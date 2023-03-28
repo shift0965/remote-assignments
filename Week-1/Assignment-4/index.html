@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Google search</title>
+</head>
+<body>
+  <header class="flex pt-3 pl-3 pr-3 text-sm">
+    <div class="left mr-auto">
+      <a href="https://about.google/">關於Google</a>
+      <a href="https://store.google.com/" class="ml-4">Google 商店</a>
+    </div>
+
+    <div class="right">
+      <a href="https://www.google.com/gmail/" class="mr-4">Gmail</a>
+      <a href="https://www.google.com.tw/imghp?hl=en&authuser=0&ogbl" class="mr-4">圖片</a>
+      <a href="https://accounts.google.com/ " class="bg-blue-500 pt-1 pb-1 pl-5 pr-5 rounded-sm text-white">登入</a>
+    </div>
+  </header>
+  <div class="w-full pt-16 flex flex-col justify-center items-center mx-auto">
+    <div class="py-10 text-center rounded-lg 
+                  lg:w-[800px] md:w-[600px] w-[400px]">
+                
+      <h1 class="font-semibold md:text-7xl text-6xl flex justify-center">
+
+        <span class=" text-blue-500"  >G</span>
+        <span class=" text-red-500"   >o</span>
+        <span class=" text-yellow-500">o</span>
+        <span class=" text-blue-500"  >g</span>
+        <span class=" text-green-500" >l</span>
+        <span class=" text-red-500"   >e</span>
+      </h1> 
+    </div>
+
+    <div class="search mt-2 w-full flex justify-center items-center ">
+      <form id="form" class="w-fit relative">
+        <i class="fa-solid fa-magnifying-glass absolute text-gray-500 top-3 left-3"></i>
+        <input type="text" id="search" name="search" class=" md:w-[600px] w-64 h-10 border-[1.5px] border-gray-300 focus:border-0 outline-none rounded-full focus:shadow-[0px_0px_10px_0px_rgba(0,0,0,0.2)] pl-9"> 
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    const search = document.getElementById("search");
+
+    function googleSearch(item){
+      window.open('https://www.google.com/search?q='+item);
+    }
+
+    search.addEventListener('keypress', function(e){
+      if (e.keyCode == 13){
+        e.preventDefault();
+        googleSearch(search.value);
+        search.value = "";
+      }
+    })
+    
+  </script>
+</body>
+</html>
