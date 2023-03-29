@@ -957,7 +957,17 @@ img {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+@media (max-width: 900px) {
+  .max-\[900px\]\:hidden {
+    display: none;
+  }
+}
+
 @media (max-width: 800px) {
+  .max-\[800px\]\:hidden {
+    display: none;
+  }
+
   .max-\[800px\]\:w-7 {
     width: 1.75rem;
   }
@@ -968,9 +978,45 @@ img {
   }
 }
 
+@media (max-width: 700px) {
+  .max-\[700px\]\:hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .max-\[600px\]\:left-5 {
+    left: 1.25rem;
+  }
+
+  .max-\[600px\]\:hidden {
+    display: none;
+  }
+
+  .max-\[600px\]\:w-72 {
+    width: 18rem;
+  }
+
+  .max-\[600px\]\:w-80 {
+    width: 20rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .min-\[600px\]\:hidden {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 800px) {
+  .min-\[800px\]\:hidden {
+    display: none;
   }
 }
 
@@ -1015,5 +1061,12 @@ img {
 .\[\&\>h1\]\:text-5xl>h1 {
   font-size: 3rem;
   line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .max-\[600px\]\:\[\&\>h1\]\:text-3xl>h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }
 
