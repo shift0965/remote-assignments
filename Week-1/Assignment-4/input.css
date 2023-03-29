@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+
+.tag{
+    @apply whitespace-nowrap bg-white pl-2 pr-2 rounded-lg pb-1 pt-0.5 border-[1px] border-gray-300 mr-2
+}
+
+.bk{
+    @apply min-w-[240px] h-44 flex flex-col bg-white pl-3 pr-3 rounded-lg pt-2 pb-5 mr-3
+}
+.bk .subtit{
+    @apply text-xs
+}
+.bk .subtit i{
+    @apply mr-1
+}
+.bk .title{
+    @apply text-blue-500 text-lg font-light mt-1
+}
+.bk .des{
+    @apply text-xs mt-6
+}
+.bk .icon{
+    @apply mt-auto
+}
+
+.work{
+    @apply col-span-1 w-24 h-28 flex flex-col items-center ml-auto mr-auto mt-5
+}
+.img-container{
+    @apply w-20 h-20
+}
+img{
+    @apply w-full
+}
+.work .title{
+    @apply text-center text-sm font-light mt-auto
+}
+
+.coverpage{
+    background-image: url("https://developers.google.com/homepage-assets/images/io-promo-2023.png");
+    background-size: cover;
+}
+
