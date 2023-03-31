@@ -3,12 +3,13 @@
 <head>
   <link href="./output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google developer</title>
 </head>
 <body class="body">
-  <header class="fixed z-10 w-full flex items-center pl-3 pr-3 text-sm h-11 bg-white shadow-[-10px_0px_5px_2px_rgba(0,0,0,0.2)]">
+  <header class="fixed z-20 w-full flex items-center pl-3 pr-3 text-sm h-11 bg-white shadow-[-10px_0px_5px_2px_rgba(0,0,0,0.2)]">
     <div class="left mr-12">
-      <h3 class="font-semibold text-lg flex justify-center">
+      <h3 class="font-semibold md:text-lg text-base flex justify-center">
         <span class=" text-blue-500"  >G</span>
         <span class=" text-red-500"   >o</span>
         <span class=" text-yellow-500">o</span>
@@ -29,7 +30,7 @@
       </div>
   
 
-      <form id="form" class="ml-auto w-44 relative focus-within:w-full max-[800px]:w-7 duration-100">
+      <form id="form" class="ml-auto w-44 relative focus-within:w-full duration-100 md:block hidden">
         <i class="fa-solid fa-magnifying-glass absolute text-gray-500 top-2 left-2"></i>
         <input type="text" id="search" name="search" placeholder="Search"
           class="w-full h-8 pl-7 max-[800px]:bg-white bg-gray-100 outline-none rounded-md focus:shadow-[1px_1px_3px_0px_rgba(0,0,0,0.2)]"> 
@@ -49,31 +50,34 @@
     </div>
   </header>
   <main>
-    <section class="coverpage min-h-screen bg-gray-900 relative block">
-      
+    <div class="sticky-container">
+      <section class="coverpage z-10 min-h-screen w-full bg-gray-900 absolute block">
+        <div class="w-96 h-80 bg-white rounded-lg p-4
+          absolute bottom-10 left-10 
+          max-[600px]:left-5 max-[600px]:w-64 max-[600px]:[&>h1]:text-3xl
+          [&>h1]:text-5xl">
+          <h1>Let's go</h1>
+          <h1 class="mt-1">It's Google I/O</h1>
+          <h1 class="mt-1">May 10, 2023</h1>
+          <p class="mt-4 font-light md:text-base text-sm">Tune in online to learn about the latest solutions, products, and technologies that help you work smarter and simplify your development workflow.</p>
+          <button class="text-xs pt-1.5 pb-2 pl-3 pr-3 border-black rounded-md bg-orange-300 hover:bg-orange-400 mt-4 border-[1px]">
+            Register now
+          </button>
+        </div>
+      </section>
 
-      <div class="w-96 h-80 bg-white rounded-lg p-4
-        absolute bottom-10 left-10 
-        max-[600px]:left-5 max-[600px]:w-80 max-[600px]:[&>h1]:text-3xl
-        [&>h1]:text-5xl">
-        <h1>Let's go</h1>
-        <h1 class="mt-1">It's Google I/O</h1>
-        <h1 class="mt-1">May 10, 2023</h1>
-        <p class="mt-4 font-light">Tune in online to learn about the latest solutions, products, and technologies that help you work smarter and simplify your development workflow.</p>
-        <button class="text-xs pt-1.5 pb-2 pl-3 pr-3 border-black rounded-md bg-orange-300 hover:bg-orange-400 mt-4 border-[1px]">
-          Register now
-        </button>
-      </div>
+      <section class="buffer bg-gray-500 w-full h-screen">
+      </section>
+      
+      <section class="bg-gray-200 pt-10 pb-14 pl-5 pr-5 sticky bottom-[-200px]">
+        <h3 class="mb-5 text-sm">Select interests to filter</h3>
+        <div class="mb-5 tags flex text-gray-800 overflow-scroll no-scrollbar">
+        </div>
+        <div class="bks flex overflow-scroll no-scrollbar">
+        </div>
+      </section>
+    </div>
     
-    </section>
-    
-    <section class="bg-gray-200 pt-10 pb-14 pl-5 pr-5">
-      <h3 class="mb-5 text-sm">Select interests to filter</h3>
-      <div class="mb-5 tags flex text-gray-800 overflow-scroll no-scrollbar">
-      </div>
-      <div class="bks flex overflow-scroll no-scrollbar">
-      </div>
-    </section>
 
     <section class="bg-white pt-10 pb-14 pl-5 pr-5">
       <h1 class="mb-5 text-4xl text-center font-light">Build <span class="font-semibold">anything</span> with Google</h1>
@@ -87,7 +91,7 @@
   </main>
 
   
-  <footer class="z-10 w-full flex items-center pl-3 pr-3 pt-5 pb-5 text-sm border-t-2">
+  <footer class="z-10 w-full flex items-center pl-3 pr-3 pt-5 pb-5 text-sm">
     <div class="left mr-12">
       <h3 class="font-semibold text-lg flex justify-center">
         <span class=" text-blue-500"  >G</span>
@@ -110,7 +114,7 @@
       </div>
     </div>
     </div>
-  </header>
+  </footer>
   </div>
 
   <script type="module" src="app.js"></script>

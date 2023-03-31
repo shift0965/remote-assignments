@@ -1,3 +1,7 @@
+/*
+npx tailwindcss -i ./input.css -o ./output.css --watch
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -51,5 +55,6 @@ img{
 .coverpage{
     background-image: url("https://developers.google.com/homepage-assets/images/io-promo-2023.png");
     background-size: cover;
+    background-position: right;
 }
 

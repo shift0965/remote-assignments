@@ -1,4 +1,8 @@
 /*
+npx tailwindcss -i ./input.css -o ./output.css --watch
+*/
+
+/*
 ! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
 */
 
@@ -525,8 +529,16 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .bottom-10 {
   bottom: 2.5rem;
+}
+
+.bottom-\[-200px\] {
+  bottom: -200px;
 }
 
 .left-10 {
@@ -543,6 +555,10 @@ video {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
 }
 
 .mb-5 {
@@ -605,6 +621,10 @@ video {
   height: 20rem;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -661,10 +681,6 @@ video {
   border-width: 1px;
 }
 
-.border-t-2 {
-  border-top-width: 2px;
-}
-
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
@@ -683,6 +699,11 @@ video {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
 .bg-gray-900 {
@@ -759,6 +780,11 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-lg {
@@ -940,6 +966,7 @@ img {
 .coverpage{
   background-image: url("https://developers.google.com/homepage-assets/images/io-promo-2023.png");
   background-size: cover;
+  background-position: right;
 }
 
 .focus-within\:w-full:focus-within {
@@ -964,23 +991,9 @@ img {
 }
 
 @media (max-width: 800px) {
-  .max-\[800px\]\:hidden {
-    display: none;
-  }
-
-  .max-\[800px\]\:w-7 {
-    width: 1.75rem;
-  }
-
   .max-\[800px\]\:bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  }
-}
-
-@media (max-width: 700px) {
-  .max-\[700px\]\:hidden {
-    display: none;
   }
 }
 
@@ -993,30 +1006,28 @@ img {
     display: none;
   }
 
-  .max-\[600px\]\:w-72 {
-    width: 18rem;
-  }
-
-  .max-\[600px\]\:w-80 {
-    width: 20rem;
-  }
-}
-
-@media (min-width: 600px) {
-  .min-\[600px\]\:hidden {
-    display: none;
+  .max-\[600px\]\:w-64 {
+    width: 16rem;
   }
 }
 
 @media (min-width: 768px) {
+  .md\:block {
+    display: block;
+  }
+
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-}
 
-@media (min-width: 800px) {
-  .min-\[800px\]\:hidden {
-    display: none;
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 

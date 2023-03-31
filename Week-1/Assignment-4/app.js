@@ -14,9 +14,6 @@ search.addEventListener('keypress', function(e){
     }
 })
 
-
-
-
 const tagsDiv = document.querySelector('.tags');
 tagsDiv.innerHTML = tags.map(tag => `<div class="tag"> ${tag}</div>`).join(' ')
 
@@ -43,6 +40,9 @@ worksDiv.innerHTML = works.map(work =>
     </div>
     `
 ).join('')
+
+
+
 
     
 
