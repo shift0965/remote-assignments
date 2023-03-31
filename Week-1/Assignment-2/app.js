@@ -2,12 +2,12 @@ const boxs = document.querySelectorAll(".box");
 const popup = document.querySelector(".popup");
 const popupTitle = popup.querySelector('.upper');
 const popupImg = popup.querySelector('.img-container');
-const closeButton = popup.querySelector(".closebtn");
+const closePopup = popup.querySelector(".closebtn");
 const hint = document.querySelector('.hint');
 
-console.log(closeButton)
+console.log(closePopup)
 
-closeButton.addEventListener("click", function(){
+closePopup.addEventListener("click", function(){
     popup.classList.remove('active');
 })
 

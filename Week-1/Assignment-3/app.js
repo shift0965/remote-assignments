@@ -1,5 +1,5 @@
 function countAandB(input){
-    let count=0;
+    var count=0;
 
    input.forEach(char => {
     if(char === 'a' || char === 'b') count++;
