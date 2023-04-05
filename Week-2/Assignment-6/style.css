@@ -1,0 +1,107 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    height: 50px;
+    position: sticky;
+    top:0px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eeeeee;
+    padding: 0px 15px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    margin: 0px 10px;
+}
+
+main{
+    display: block;
+}
+
+#banner{
+    height: 200px;
+    background-color:#ccddee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-text{
+    display: none;
+    margin: 0 auto;
+    border-right: .15em solid orange; 
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+        typing 1.5s steps(20, end),
+        cursor .5s step-end infinite;
+}
+#text-1{
+    width: 295px;
+}
+#text-2{
+    width: 265px;
+}
+#text-3{
+    width: 405px;
+}
+#text-4{
+    width: 440px;
+}
+
+@keyframes cursor{
+    from, to {border-color: transparent}
+    50% {border-color: black};
+}
+@keyframes typing{
+    from {width :0}
+}
+
+.active{
+    display: inline-block;
+}
+
+.boxs{
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    padding: 20px 30px;
+    margin: 10px auto;
+}
+
+.boxs-active{
+    display: grid;
+}
+
+.btn-container{
+    width: 100%;
+    display: flex;
+}
+
+#expand{
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #ccddee;
+    border: none;
+    cursor: pointer;
+}
+
+.box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8899aa; 
+}
+
