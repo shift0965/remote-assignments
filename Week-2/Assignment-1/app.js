@@ -1,14 +1,14 @@
 function max(numbers) {
-// your code here, for-loop method preferred
+    // your code here, for-loop method preferred
     let max = 0;
-    for(let i=0; i<numbers.length; i++){
-        max = (numbers[i] > max)? numbers[i]:max;
+    for(let i = 0; i < numbers.length; i++){
+        max = (numbers[i] > max) ? numbers[i] : max;
     }
     return max;
 }
 function findPosition(numbers, target) {
-// your code here, for-loop method preferred
-    for(let i=0; i<numbers.length; i++){
+    // your code here, for-loop method preferred
+    for(let i = 0; i < numbers.length; i++){
         if(numbers[i] === target){
             return i;
         }

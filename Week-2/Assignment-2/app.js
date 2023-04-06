@@ -1,6 +1,6 @@
 function avg (data){
     // your code here
-    return data.products.reduce((total, product) => total+product.price, 0)/data.size
+    return data.products.reduce((total, product) => total + product.price, 0) / data.size
 }
 
 
@@ -8,8 +8,7 @@ function avg (data){
 console.log (
 avg ({
     size: 3,
-    products:[
-        {
+    products:[{
             name: 'Product 1',
             price: 100,
         },
@@ -20,7 +19,6 @@ avg ({
         {
             name: 'Product 3', 
             price: 250,
-        }
-        ]
+        }]
     })
 ) // should print the average price of all products

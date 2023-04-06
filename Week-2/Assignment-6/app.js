@@ -1,12 +1,14 @@
 
 
-$('#banner').click(function(){
+$('#banner').click(function(e){
+
     const $bannerTexts = $('.banner-text');
     $bannerTexts.each(function(i){
         if($(this).hasClass("active")){
             $(this).removeClass("active");
+
             //once the active element is the last one, go back to the first one;
-            let nextI = (i===$bannerTexts.length-1)? 0:i+1;
+            let nextI = (i === $bannerTexts.length-1) ? 0 : i + 1;
             $bannerTexts.eq(nextI).addClass("active");
             return false;
         }

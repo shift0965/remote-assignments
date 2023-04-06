@@ -42,7 +42,7 @@ main{
     white-space: nowrap;
     overflow: hidden;
     animation:
-        typing 2s steps(25, end),
+        typing 1.5s steps(20, end),
         cursor .5s step-end infinite;
 }
 #text-1{

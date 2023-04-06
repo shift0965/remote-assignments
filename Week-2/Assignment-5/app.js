@@ -4,14 +4,16 @@ function binarySearchPosition(numbers, target) {
     //space complexity: O(1)
     //only applied to sorted array
     
-    let lf=0, rg=numbers.length-1;
-    while(rg >= lf){
-        let mid = Math.floor(lf+(rg-lf)/2);
+    let lowerbound = 0, 
+        higherbound = numbers.length-1;
+
+    while(higherbound >= lowerbound){
+        let mid = Math.floor(lowerbound + (higherbound - lowerbound) / 2);
         if(numbers[mid] > target){
-            rg = mid-1;
+            higherbound = mid-1;
         }
         else if(numbers[mid] < target){
-            lf = mid+1;
+            lowerbound = mid+1;
         }
         else return mid;
     }

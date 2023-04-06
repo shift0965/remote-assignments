@@ -4,7 +4,7 @@ function count(input) {
         if(str in map) 
             map[str]++;
         else
-            map[str]=1;
+            map[str] = 1;
     })
     return map;
 }
@@ -16,9 +16,9 @@ function groupByKey(input) { // your code here
     let map = {};
     input.forEach(item => {
         if(item.key in map)
-            map[item.key]+=item.value;
+            map[item.key] += item.value;
         else
-            map[item.key]=item.value;
+            map[item.key] = item.value;
     })
     return map;
 }
