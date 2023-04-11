@@ -1,21 +1,34 @@
 const express = require("express");
 const router = express.Router();
 
+function sumFromOne(num) {
+  return ((1 + num) * num) / 2;
+}
+
 router.get("/", (req, res) => {
   const { number } = req.query;
+
+  let obj = {
+    valid: false,
+    message: "",
+    value: 0,
+  };
+
   //if it empty
   if (!number) {
-    res.send("Lack of Parameter");
+    obj.message = "Lack of Parameter";
+    res.json(obj);
   }
   //check if it is a positive integer with regex
-  else if (/^\d+$/.test(number)) {
-    //the time complexity is O(1) no matter how large the number is
-    const int = +number;
-    const ans = ((1 + int) * int) / 2;
-
-    res.send(`The result is ${ans}`);
+  else if (!/^\d+$/.test(number)) {
+    obj.message = "Wrong Parameter";
+    res.json(obj);
   } else {
-    res.send("Wrong Parameter");
+    //the time complexity is O(1) no matter how large the number is
+    obj.value = sumFromOne(+number);
+    obj.message = "Success";
+    obj.valid = true;
+    res.json(obj);
   }
 });
 
