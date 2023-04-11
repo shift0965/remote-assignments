@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("head") %>
+    <title>Login</title>
+  </head>
+  <body>
+    <section class="mainContainer">
+      <% if(name) { %>
+      <h1>Welcome <%= name %></h1>
+      <form action="/removeName" method="get" class="innerContainer">
+        <input type="submit" value="Logout" class="btn" />
+      </form>
+      <% } else { %>
+      <h1>Name Cookie</h1>
+      <form action="" id="inputName" class="innerContainer">
+        <label><h2>Please enter your name</h2></label>
+        <input type="text" name="name" id="name" />
+        <input type="submit" value="Submit" class="btn" />
+      </form>
+      <% } %>
+    </section>
+
+    <script>
+      const form = document.getElementById("inputName");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          let name = document.getElementById("name").value;
+          let targetUrl = `http://localhost:3000/trackName?name=${name}`;
+          window.location.href = targetUrl;
+        });
+      }
+    </script>
+  </body>
+</html>
