@@ -1,12 +1,11 @@
 //fetch api spotify
-const client_id = "472c2a6e19774919903a6e6b10c03975";
-const client_secret = "9506e6f89d8e4ae7a06b35121ae8af07";
-const endpoint = "https://accounts.spotify.com/api/token";
-const artist_id = "2elBjNSdBE2Y3f0j1mjrql";
-let token = "";
-let token_type = "";
 
-async function fetchToken(client_id, client_secret, endpoint) {
+async function fetchTokenAndArtist() {
+  const client_id = "472c2a6e19774919903a6e6b10c03975";
+  const client_secret = "9506e6f89d8e4ae7a06b35121ae8af07";
+  const endpoint = "https://accounts.spotify.com/api/token";
+  const artist_id = "2elBjNSdBE2Y3f0j1mjrql";
+
   const tokenData = await fetch(endpoint, {
     method: "POST",
     headers: {
@@ -18,11 +17,7 @@ async function fetchToken(client_id, client_secret, endpoint) {
     .then((response) => response.json())
     .catch((err) => console.error(err));
 
-  return tokenData;
-}
-
-async function getArtist(tokenData, artist_id) {
-  const artistData = fetch(
+  const artistData = await fetch(
     `https://api.spotify.com/v1/artists/${artist_id}/top-tracks?market=TW`,
     {
       headers: {
@@ -33,15 +28,11 @@ async function getArtist(tokenData, artist_id) {
     .then((response) => response.json())
     .catch((err) => console.error(err));
 
-  return artistData;
+  let tracks = artistData.tracks;
+  startMusicBox(tracks);
 }
 
-fetchToken(client_id, client_secret, endpoint)
-  .then((tokenData) => getArtist(tokenData, artist_id))
-  .then((artistData) => {
-    tracks = artistData.tracks;
-    startMusicBox(tracks);
-  });
+fetchTokenAndArtist();
 
 // -------------------------------- dom js -------------------------------- //
 const trackCover = document.getElementById("trackCover");

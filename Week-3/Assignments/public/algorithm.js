@@ -17,23 +17,21 @@ form.addEventListener("submit", function (e) {
 });
 
 async function getResult(number) {
-  console.log(number);
-  const result = await fetch(`${window.location.href}/cal`, {
+  let response = await fetch(`${window.location.href}/cal`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ number }),
-  })
-    .then((response) => response.json())
-    .then((data) => renderHeadline(data.result))
-    .catch((error) => {
-      console.log(error);
-    });
+  }).catch((error) => {
+    console.error(error);
+  });
+
+  response = await response.json();
+  renderHeadline(response.result);
 }
 
 function renderHeadline(result) {
-  console.log(result);
   if (result) {
     headline.innerHTML = `
     <h1>The result is </h1>
