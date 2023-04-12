@@ -19,6 +19,9 @@ app.get("/", (req, res) => {
 app.get("/sum", (req, res) => {
   res.sendFile(__dirname + "/public/sum.html");
 });
+app.get("/algorithm", function (req, res) {
+  res.sendFile(__dirname + "/public/algorithm.html");
+});
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");

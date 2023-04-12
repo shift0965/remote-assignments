@@ -20,10 +20,11 @@ function twoSum(nums, target) {
   return null;
 }
 
-router.get("/", function (req, res) {
+router.post("/cal", function (req, res) {
   let nums = [2, 7, 11, 15];
-  let target = 9;
-  res.json({ nums, target, ans: twoSum(nums, target) });
+  let target = +req.body.number;
+  let result = twoSum(nums, target);
+  res.json({ result });
 });
 
 module.exports = router;
