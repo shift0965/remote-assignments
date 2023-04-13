@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 router.use(cookieParser());
 
 router.get("/myName", (req, res) => {
-  let { name } = req.cookies;
+  const { name } = req.cookies;
   res.render("myName", { name });
 });
 

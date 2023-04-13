@@ -8,7 +8,7 @@ function sumFromOne(num) {
 router.get("/", (req, res) => {
   const { number } = req.query;
 
-  let obj = {
+  const obj = {
     valid: false,
     message: "",
     value: 0,

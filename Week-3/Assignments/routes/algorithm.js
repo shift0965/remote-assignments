@@ -21,9 +21,9 @@ function twoSum(nums, target) {
 }
 
 router.post("/cal", function (req, res) {
-  let nums = [2, 7, 11, 15];
-  let target = +req.body.number;
-  let result = twoSum(nums, target);
+  const nums = [2, 7, 11, 15];
+  const target = +req.body.number;
+  const result = twoSum(nums, target);
   res.json({ result });
 });
 

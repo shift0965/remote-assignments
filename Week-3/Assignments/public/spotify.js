@@ -6,30 +6,31 @@ async function fetchTokenAndArtist() {
   const endpoint = "https://accounts.spotify.com/api/token";
   const artist_id = "2elBjNSdBE2Y3f0j1mjrql";
 
-  const tokenData = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    market: "TW",
-    body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`,
-  })
-    .then((response) => response.json())
-    .catch((err) => console.error(err));
-
-  const artistData = await fetch(
-    `https://api.spotify.com/v1/artists/${artist_id}/top-tracks?market=TW`,
-    {
+  try {
+    const token = await fetch(endpoint, {
+      method: "POST",
       headers: {
-        Authorization: `${tokenData.token_type} ${tokenData.access_token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-    }
-  )
-    .then((response) => response.json())
-    .catch((err) => console.error(err));
+      market: "TW",
+      body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`,
+    });
+    const tokenData = await token.json();
+    const artist = await fetch(
+      `https://api.spotify.com/v1/artists/${artist_id}/top-tracks?market=TW`,
+      {
+        headers: {
+          Authorization: `${tokenData.token_type} ${tokenData.access_token}`,
+        },
+      }
+    );
+    const artistData = await artist.json();
 
-  let tracks = artistData.tracks;
-  startMusicBox(tracks);
+    const tracks = artistData.tracks;
+    startMusicBox(tracks);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 fetchTokenAndArtist();

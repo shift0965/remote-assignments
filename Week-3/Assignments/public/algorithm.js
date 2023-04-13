@@ -4,7 +4,7 @@ const headline = document.querySelector("#headline");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  number = input.value;
+  const number = input.value;
   if (!number) {
     headline.innerHTML = "<h1>Lack of Parameter</h1>";
   }
@@ -17,18 +17,20 @@ form.addEventListener("submit", function (e) {
 });
 
 async function getResult(number) {
-  let response = await fetch(`${window.location.href}/cal`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ number }),
-  }).catch((error) => {
-    console.error(error);
-  });
+  try {
+    const result = await fetch(`${window.location.href}/cal`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ number }),
+    });
 
-  response = await response.json();
-  renderHeadline(response.result);
+    resultData = await result.json();
+    renderHeadline(resultData.result);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function renderHeadline(result) {
