@@ -26,7 +26,7 @@ async function getResult(number) {
       body: JSON.stringify({ number }),
     });
 
-    resultData = await result.json();
+    const resultData = await result.json();
     renderHeadline(resultData.result);
   } catch (error) {
     console.error(error);
