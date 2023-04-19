@@ -46,8 +46,11 @@ async function postRequest(url, object) {
       },
       body: JSON.stringify(object),
     });
-    const result = await response.json();
-    return result;
+    if (response.redirected) {
+      window.location.href = response.url;
+      return;
+    }
+    return await response.json();
   } catch (error) {
     console.log(error);
     return error;
@@ -73,20 +76,20 @@ signinbtn.addEventListener("click", async (e) => {
     return;
   }
 
-  const { exist } = await postRequest("/account/checkEmailExist", { email });
+  const { exist } = await postRequest("/checkEmailExist", { email });
   if (!exist) {
     createWarning(emailInput, "Email dose not exist");
     return;
   }
-  const { user } = await postRequest("/account/checkEmailPassword", {
+  const { user } = await postRequest("/checkEmailPassword", {
     email,
     password,
   });
-  console.log(user);
   if (!user) {
     createWarning(passwordInput, "Password is incorrect");
     return;
   }
+  return await postRequest("/loginSuccess", user);
 });
 
 signupbtn.addEventListener("click", async (e) => {
@@ -127,15 +130,16 @@ signupbtn.addEventListener("click", async (e) => {
     return;
   }
 
-  const { exist } = await postRequest("/account/checkEmailExist", { email });
+  const { exist } = await postRequest("/checkEmailExist", { email });
   if (exist) {
     createWarning(emailInput, "Email has already been registered");
     return;
   }
-  const { user } = await postRequest("/account/addUser", {
+  const { user } = await postRequest("/addUser", {
     userName,
     email,
     password,
   });
-  console.log(user);
+
+  return await postRequest("/loginSuccess", user);
 });

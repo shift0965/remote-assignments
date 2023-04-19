@@ -1,0 +1,20 @@
+<% if (username) { %>
+<header>
+  <div class="left">
+    <a href="/">Home</a>
+  </div>
+  <div class="right">
+    <a href="/user"><h3><%= username %></h3></a>
+    <a href="/logout">logout</a>
+  </div>
+</header>
+<% } else { %>
+<header>
+  <div class="left">
+    <a href="/">Home</a>
+  </div>
+  <div class="right">
+    <a href="/login">login</a>
+  </div>
+</header>
+<% } %>
