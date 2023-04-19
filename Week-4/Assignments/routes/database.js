@@ -38,8 +38,7 @@ export async function checkEmailExist(email) {
       "SELECT id FROM user WHERE email =?",
       [email]
     );
-    const user = { rows };
-    if (user.length > 0) return { exist: true };
+    if (rows.length > 0) return { exist: true };
     else return { exist: false };
   } catch (err) {
     console.error(err);
@@ -55,7 +54,8 @@ export async function checkEmailPassword(email, password) {
       [email, password]
     );
     const user = rows[0];
-    return user;
+    if (user) return { user };
+    else return { user: null };
   } catch (err) {
     console.error(err);
     return err;
@@ -70,7 +70,7 @@ export async function addUser(username, email, password) {
       [username, email, password]
     );
     const id = rows.insertId;
-    return { id, username };
+    return { user: { id, username } };
   } catch (err) {
     console.error(err);
     return err;

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/login.css" />
+    <title>Account</title>
+  </head>
+  <body>
+    <section class="mainContainer">
+      <div class="headline" id="signinHeading">
+        <h1>Sign in</h1>
+        <p>Don't have a account? <a id="toSignup">sign up</a></p>
+      </div>
+      <div class="headline hidden" id="signupHeading">
+        <h1>Sign up</h1>
+        <p>Already have a account? <a id="toSignin">sign in</a></p>
+      </div>
+
+      <form id="signinForm" class="innerContainer">
+        <label>Email</label>
+        <input type="text" id="signinEmail" />
+
+        <label>Password</label>
+        <input type="password" id="signinPassword" />
+
+        <button class="btn" id="signinbtn">Submit</button>
+      </form>
+
+      <form id="signupForm" class="innerContainer hidden">
+        <label>UserName</label>
+        <input type="text" id="signupUserName" />
+
+        <label>Email</label>
+        <input type="text" id="signupEmail" />
+
+        <label>Password</label>
+        <input type="password" id="signupPassword" />
+
+        <label>Confirm Password</label>
+        <input type="password" id="signupConfirmPassword" />
+
+        <button class="btn" id="signupbtn">Submit</button>
+      </form>
+      <a href="http://localhost:3000/" id="home"> back to home </a>
+    </section>
+
+    <script src="js/login.js"></script>
+  </body>
+</html>

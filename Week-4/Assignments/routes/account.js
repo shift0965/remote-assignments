@@ -16,8 +16,8 @@ router.get("/getUsers", async (req, res) => {
 
 router.post("/checkEmailExist", async (req, res) => {
   const { email } = req.body;
-  const exist = await checkEmailExist(email);
-  res.send(exist);
+  const result = await checkEmailExist(email);
+  res.send(result);
 });
 router.post("/checkEmailPassword", async (req, res) => {
   const { email, password } = req.body;
@@ -26,13 +26,9 @@ router.post("/checkEmailPassword", async (req, res) => {
 });
 
 router.post("/addUser", async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!username || !email || !password) {
-    res.send({ error: "All fields are required" });
-  } else {
-    const user = await addUser(username, email, password);
-    res.send(user);
-  }
+  const { userName, email, password } = req.body;
+  const user = await addUser(userName, email, password);
+  res.send(user);
 });
 
 router.delete("/removeUser", async (req, res) => {
