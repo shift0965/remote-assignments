@@ -1,5 +1,6 @@
 import express from "express";
 import accountRouter from "./routes/account.js";
+import articlesRouter from "./routes/articles.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -8,6 +9,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/", accountRouter);
+app.use("/", articlesRouter);
 
 app.get("/", function (req, res) {
   const username = req.cookies.username;
@@ -22,6 +24,11 @@ app.get("/assignment1", function (req, res) {
 app.get("/assignment2", function (req, res) {
   const username = req.cookies.username;
   res.render("assignment2", { username });
+});
+
+app.get("/assignment3", function (req, res) {
+  const username = req.cookies.username;
+  res.render("assignment3", { username });
 });
 
 app.listen(3000, () => {

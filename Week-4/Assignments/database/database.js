@@ -19,6 +19,8 @@ export async function connectdb() {
   }
 }
 
+//user tbale
+
 export async function getUsers() {
   try {
     const db = await connectdb();
@@ -86,6 +88,49 @@ export async function removeUser(id) {
     } else {
       return { userRemoved: false };
     }
+  } catch (err) {
+    console.error(err);
+    return err;
+  }
+}
+
+//articles table
+
+export async function getArticles() {
+  try {
+    const db = await connectdb();
+    const [rows, field] = await db.execute(
+      "SELECT articles.id, username, email, content FROM articles LEFT JOIN user ON articles.author_email = user.email ORDER BY username;"
+    );
+    return rows;
+  } catch (err) {
+    console.error(err);
+    return err;
+  }
+}
+
+export async function getArticlesByUser(username) {
+  try {
+    const db = await connectdb();
+    const [rows, field] = await db.execute(
+      "SELECT articles.id, username, email, content FROM articles LEFT JOIN user ON articles.author_email = user.email WHERE user.username LIKE ? ORDER BY username;",
+      ["%" + username + "%"]
+    );
+    return rows;
+  } catch (err) {
+    console.error(err);
+    return err;
+  }
+}
+
+export async function getArticlesById(lower, upper) {
+  try {
+    const db = await connectdb();
+    const [rows, field] = await db.execute(
+      "SELECT articles.id, username, email, content FROM articles LEFT JOIN user ON articles.author_email = user.email WHERE articles.id >= ? AND articles.id < ? ORDER BY username;",
+      [lower, upper]
+    );
+    return rows;
   } catch (err) {
     console.error(err);
     return err;
