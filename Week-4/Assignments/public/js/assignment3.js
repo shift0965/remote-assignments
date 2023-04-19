@@ -1,5 +1,5 @@
 function render(data) {
-  const headline = document.querySelector("#headline");
+  const form = document.getElementById("form");
   if (data) {
     const table = document.createElement("table");
     const header = table.createTHead();
@@ -22,17 +22,39 @@ function render(data) {
       table.appendChild(tr);
     });
 
-    headline.appendChild(table);
-    document.querySelector("#submit").remove();
-  } else {
-    headline.innerHTML = "Connection failed";
+    form.append(table);
   }
 }
+
+function clearFrom() {
+  const table = document.querySelector("table");
+  if (table) table.remove();
+}
+
+async function getArticles(username, lower, upper) {
+  const res = await fetch("/getArticlesByUserAndId", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, lower, upper }),
+  });
+  const data = await res.json();
+  render(data);
+}
+
+getArticles();
 
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", async (e) => {
   e.preventDefault();
-  const res = await fetch("/getArticles");
-  const data = await res.json();
-  render(data);
+  clearFrom();
+  const username = document.getElementById("username").value;
+  const lower = document.getElementById("lower").value;
+  const upper = document.getElementById("upper").value;
+  getArticles(
+    username === "" ? undefined : username,
+    isNaN(parseInt(lower)) ? undefined : lower,
+    isNaN(parseInt(upper)) ? undefined : upper
+  );
 });

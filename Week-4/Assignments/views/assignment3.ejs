@@ -3,17 +3,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/search.css" />
     <title>Assignment3</title>
   </head>
   <body>
     <%- include('header') %>
     <section class="mainContainer">
       <div id="headline" class="headline">
-        <h1>Search</h1>
+        <h1>Articles</h1>
       </div>
       <form id="form" class="innerContainer">
-        <button class="btn" id="submit">Send Request</button>
+        <h2>Advanced Search</h2>
+        <div class="inputs">
+          <div>
+            <label>username: </label><input type="text" id="username" />
+          </div>
+          <div>
+            <label>Id Lower Bound: </label><input type="text" id="lower" />
+          </div>
+          <div>
+            <label>Id Larger Bound: </label><input type="text" id="upper" />
+          </div>
+        </div>
+        <button class="btn" id="submit">Search</button>
       </form>
 
       <script src="./js/assignment3.js"></script>

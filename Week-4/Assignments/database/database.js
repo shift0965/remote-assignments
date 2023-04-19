@@ -109,26 +109,20 @@ export async function getArticles() {
   }
 }
 
-export async function getArticlesByUser(username) {
+export async function getArticlesByUserAndId(
+  username = "",
+  lower = 0,
+  upper = 99
+) {
   try {
     const db = await connectdb();
     const [rows, field] = await db.execute(
-      "SELECT articles.id, username, email, content FROM articles LEFT JOIN user ON articles.author_email = user.email WHERE user.username LIKE ? ORDER BY username;",
-      ["%" + username + "%"]
-    );
-    return rows;
-  } catch (err) {
-    console.error(err);
-    return err;
-  }
-}
-
-export async function getArticlesById(lower, upper) {
-  try {
-    const db = await connectdb();
-    const [rows, field] = await db.execute(
-      "SELECT articles.id, username, email, content FROM articles LEFT JOIN user ON articles.author_email = user.email WHERE articles.id >= ? AND articles.id < ? ORDER BY username;",
-      [lower, upper]
+      `SELECT articles.id, username, email, content FROM 
+        articles LEFT JOIN user ON articles.author_email = user.email 
+        WHERE user.username LIKE ? AND
+        articles.id BETWEEN ? AND ?
+        ORDER BY username, articles.id;`,
+      ["%" + username + "%", lower, upper]
     );
     return rows;
   } catch (err) {
