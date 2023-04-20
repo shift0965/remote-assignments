@@ -9,7 +9,6 @@ router.get("/getArticles", async (req, res) => {
 
 router.post("/getArticlesByUserAndId", async (req, res) => {
   const { username, lower, upper } = req.body;
-  console.log(username, lower, upper);
   const results = await getArticlesByUserAndId(username, lower, upper);
   res.json(results);
 });
