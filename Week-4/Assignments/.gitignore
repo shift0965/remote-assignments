@@ -1,8 +1,0 @@
-# Mac DS_Store Files
-.DS_Store
-
-# Machine-specific configuration files
-.env
-
-# Dependent directories
-node_modules/
