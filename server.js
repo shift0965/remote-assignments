@@ -3,6 +3,8 @@ import accountRouter from "./routes/account.js";
 import articlesRouter from "./routes/articles.js";
 import cookieParser from "cookie-parser";
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -31,6 +33,6 @@ app.get("/assignment3", function (req, res) {
   res.render("assignment3", { username });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Example app listening on port 3000!");
 });
