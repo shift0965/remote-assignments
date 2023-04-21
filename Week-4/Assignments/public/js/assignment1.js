@@ -27,6 +27,21 @@ delayedResult(-5, 10, 2000, function (result) {
 }); // 5 (-5+10) will be shown in the console after 2 seconds
 */
 
+function delayedResultPromise(n1, n2, delayTime) {
+  // your code here
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve(n1 + n2);
+    }, delayTime);
+  });
+}
+
+async function main() {
+  const num = await delayedResultPromise(4, 5, 3000);
+  console.log(num);
+}
+//main();
+
 const formSubmit = document.querySelector("#formSubmit");
 const number1 = document.querySelector("#number1");
 const number2 = document.querySelector("#number2");
