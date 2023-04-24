@@ -18,15 +18,27 @@ router.get("/login", function (req, res) {
   res.sendFile(filePath);
 });
 
-router.post("/loginSuccess", function (req, res) {
-  const { id, username } = req.body;
-  res.cookie("id", id);
-  res.cookie("username", username);
-  res.status(302).redirect("/user");
+router.post("/checkEmailExist", async (req, res) => {
+  const { email } = req.body;
+  const result = await checkEmailExist(email);
+  res.send(result);
+});
+
+router.post("/checkEmailPassword", async (req, res) => {
+  const { email, password } = req.body;
+  const { user } = await checkEmailPassword(email, password);
+  if (user) {
+    req.session.authorized = true;
+    req.session.user = user;
+    const { username } = req.session.user;
+    res.status(200).redirect("/user");
+  } else {
+    res.status(401).json({ message: "Password is incorrect" });
+  }
 });
 
 router.get("/user", function (req, res) {
-  const { username, id } = req.cookies;
+  const { username } = req.session.user;
   res.render("user", { username });
 });
 
@@ -35,32 +47,22 @@ router.get("/getUsers", async (req, res) => {
   res.send(users);
 });
 
-router.post("/checkEmailExist", async (req, res) => {
-  const { email } = req.body;
-  const result = await checkEmailExist(email);
-  res.send(result);
-});
-router.post("/checkEmailPassword", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await checkEmailPassword(email, password);
-  res.send(user);
-});
-
 router.post("/addUser", async (req, res) => {
   const { userName, email, password } = req.body;
   const user = await addUser(userName, email, password);
-  res.send(user);
+  req.session.authorized = true;
+  req.session.user = user;
+  res.status(200).redirect("/user");
 });
 
 router.delete("/removeUser", async (req, res) => {
-  const { id } = req.cookies;
+  const { id } = res.session.user;
   const result = await removeUser(id);
   res.redirect("/logout");
 });
 
 router.get("/logout", function (req, res) {
-  res.clearCookie("id");
-  res.clearCookie("username");
+  req.session.destroy(null);
   res.redirect("/");
 });
 

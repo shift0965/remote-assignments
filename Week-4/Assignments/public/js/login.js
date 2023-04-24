@@ -81,15 +81,11 @@ signinbtn.addEventListener("click", async (e) => {
     createWarning(emailInput, "Email dose not exist");
     return;
   }
-  const { user } = await postRequest("/checkEmailPassword", {
+  const checkPWD = await postRequest("/checkEmailPassword", {
     email,
     password,
   });
-  if (!user) {
-    createWarning(passwordInput, "Password is incorrect");
-    return;
-  }
-  return await postRequest("/loginSuccess", user);
+  createWarning(passwordInput, checkPWD.message);
 });
 
 signupbtn.addEventListener("click", async (e) => {
@@ -135,11 +131,9 @@ signupbtn.addEventListener("click", async (e) => {
     createWarning(emailInput, "Email has already been registered");
     return;
   }
-  const { user } = await postRequest("/addUser", {
+  const addResult = await postRequest("/addUser", {
     userName,
     email,
     password,
   });
-
-  return await postRequest("/loginSuccess", user);
 });
