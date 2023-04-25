@@ -27,7 +27,7 @@ async function handleError(callback) {
 }
 
 //user table
-export default class User {
+class User {
   async getUsers() {
     const result = await handleError(async (db) => {
       const [rows, field] = await db.execute("SELECT * FROM user;");
@@ -87,31 +87,6 @@ export default class User {
     });
     return result;
   }
-
-  //articles table
-
-  async getArticles() {
-    const result = await handleError(async (db) => {
-      const [rows, field] = await db.execute(
-        "SELECT articles.id, username, email, content FROM articles LEFT JOIN user ON articles.author_email = user.email ORDER BY username;"
-      );
-      return rows;
-    });
-    return result;
-  }
-
-  async getArticlesByUserAndId(username = "", lower = 0, upper = 99) {
-    const result = await handleError(async (db) => {
-      const [rows, field] = await db.execute(
-        `SELECT articles.id, username, email, content FROM 
-          articles LEFT JOIN user ON articles.author_email = user.email 
-          WHERE user.username LIKE ?
-          ORDER BY articles.id
-          LIMIT ? OFFSET ?;`,
-        ["%" + username + "%", upper - lower, lower]
-      );
-      return rows;
-    });
-    return result;
-  }
 }
+
+export default new User();
