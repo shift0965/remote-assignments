@@ -1,5 +1,4 @@
 import express from "express";
-import User from "../model/userModel.js";
 import UserController from "../controller/userController.js";
 
 import path from "path";
