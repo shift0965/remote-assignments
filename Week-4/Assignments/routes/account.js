@@ -1,11 +1,5 @@
 import express from "express";
-import {
-  getUsers,
-  checkEmailExist,
-  checkEmailPassword,
-  addUser,
-  removeUser,
-} from "../database/database.js";
+import User from "../model/userModel.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -20,13 +14,13 @@ router.get("/login", function (req, res) {
 
 router.post("/checkEmailExist", async (req, res) => {
   const { email } = req.body;
-  const result = await checkEmailExist(email);
+  const result = await User.checkEmailExist(email);
   res.send(result);
 });
 
 router.post("/checkEmailPassword", async (req, res) => {
   const { email, password } = req.body;
-  const { user } = await checkEmailPassword(email, password);
+  const { user } = await User.checkEmailPassword(email, password);
   if (user) {
     req.session.authorized = true;
     req.session.user = user;
@@ -43,13 +37,13 @@ router.get("/user", function (req, res) {
 });
 
 router.get("/getUsers", async (req, res) => {
-  const users = await getUsers();
+  const users = await User.getUsers();
   res.send(users);
 });
 
 router.post("/addUser", async (req, res) => {
   const { userName, email, password } = req.body;
-  const user = await addUser(userName, email, password);
+  const user = await User.addUser(userName, email, password);
   req.session.authorized = true;
   req.session.user = user;
   res.status(200).redirect("/user");
@@ -57,7 +51,7 @@ router.post("/addUser", async (req, res) => {
 
 router.delete("/removeUser", async (req, res) => {
   const { id } = res.session.user;
-  const result = await removeUser(id);
+  const result = await User.removeUser(id);
   res.redirect("/logout");
 });
 
